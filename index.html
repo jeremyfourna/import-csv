@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Import CSV</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+
+  <body>
+    <h1>Import CSV files</h1>
+    <section class="import">
+      <form name="import-csv" id="import-csv">
+        <div>
+          <label for="import-file">CSV file to import</label>
+          <input type="file" accept="csv" name="import-file" required="true">
+        </div>
+        <button type="submit" id="button-to-import">Import</button>
+      </form>
+    </section>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.0.0/papaparse.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.26.1/ramda.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+
+</html>
