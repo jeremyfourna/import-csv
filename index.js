@@ -14,6 +14,7 @@ el.addEventListener('submit', event => {
     header: true,
     worker: true,
     complete: function(results) {
+      log(results.data.length);
       const newCSV = R.compose(
         R.reduce((prev, cur) => {
           const list = [];
@@ -24,7 +25,7 @@ el.addEventListener('submit', event => {
                 if (prev.length === 0) {
                   newImage = R.assoc('abstract_sku', key, image);
                 } else {
-                  newImage = R.assoc('abstract_sku', key, image);
+                  newImage = R.assoc('concrete_sku', key, image);
                 }
                 newImage = R.assoc('sort_order', index, newImage);
                 list.push(newImage);
@@ -37,7 +38,16 @@ el.addEventListener('submit', event => {
         R.prop('data')
       )(results);
 
-      log(Papa.unparse(newCSV));
+      render('result', Papa.unparse(newCSV, { quotes: true }));
     }
   });
 });
+
+
+// Write the migration analysis in the DOM
+function render(selector, content) {
+  document.getElementById(selector)
+    .innerHTML = content;
+
+  return selector;
+}
